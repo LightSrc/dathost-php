@@ -40,7 +40,7 @@ class DathostAPI {
       case "post":
         $fields = http_build_query($params);
         if(empty($curlheaders)) {
-            $curlheaders = ['Content-Type: multipart/form-data'];
+            $curlheaders[] = 'Content-Length: ' . strlen($fields);
         }
         curl_setopt($curl_handle, CURLOPT_POST, 1);
         curl_setopt($curl_handle, CURLOPT_POSTFIELDS, $fields);
